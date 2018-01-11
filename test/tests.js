@@ -92,6 +92,7 @@ describe('Update Todo Item', function() {
 
 describe('Delete Todo Item', function() {
   var location;
+  this.timeout(15000);
 
   beforeEach(function(done) {
     post(url, {title: 'Walk the dog'}).then(function(res) {
@@ -105,7 +106,9 @@ describe('Delete Todo Item', function() {
     return assert(result, "status").to.equal(204);
   });
   */
-  it('should delete the item', function() {
+  it('should delete the item', function(done) {
+    this.timeout(15000);
+    setTimeout(done, 15000);
     var result = del(location).then(function (res) {
       return get(location);
     });
