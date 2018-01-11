@@ -7,7 +7,7 @@ var chai = require('chai'),
 chai.use(chaiAsPromised);
 var url = process.env.URL || 'http://localhost:8000/todos';
 
-
+/*
 describe('Cross Origin Requests', function() {
   var result;
 
@@ -31,7 +31,7 @@ describe('Cross Origin Requests', function() {
     return assert(result.header, 'access-control-allow-origin').to.equal('*');
   });
 });
-
+*/
 
 describe('Create Todo Item', function() {
   var result;
