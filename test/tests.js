@@ -18,9 +18,7 @@ describe('Cross Origin Requests', function() {
   });
 
 
-  it('should return the correct CORS headers', function(done) {
-    this.timeout(15000);
-    setTimeout(done, 15000);
+  it('should return the correct CORS headers', function() {
     return assert(result, "header").to.contain.all.keys([
       'access-control-allow-origin',
       'access-control-allow-methods',
