@@ -99,12 +99,12 @@ describe('Delete Todo Item', function() {
       done();
     });
   });
-
+  /*
   it('should return a 204 NO CONTENT response', function() {
     var result = del(location);
     return assert(result, "status").to.equal(204);
   });
-
+  */
   it('should delete the item', function() {
     var result = del(location).then(function (res) {
       return get(location);
