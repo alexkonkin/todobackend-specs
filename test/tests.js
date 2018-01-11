@@ -7,6 +7,7 @@ var chai = require('chai'),
 chai.use(chaiAsPromised);
 var url = process.env.URL || 'http://localhost:8000/todos';
 
+
 describe('Cross Origin Requests', function() {
   var result;
   this.timeout(15000);
@@ -17,7 +18,7 @@ describe('Cross Origin Requests', function() {
         .end();
   });
 
-  
+
   it('should return the correct CORS headers', function(done) {
     this.timeout(15000);
     setTimeout(done, 15000);
@@ -36,6 +37,7 @@ describe('Cross Origin Requests', function() {
   });
 });
 
+
 describe('Create Todo Item', function() {
   var result;
   this.timeout(15000);
@@ -50,11 +52,15 @@ describe('Create Todo Item', function() {
     return assert(result, "status").to.equal(201);
   });
 
-  it('should receive a location hyperlink', function() {
+  it('should receive a location hyperlink', function(done) {
+    this.timeout(15000);
+    setTimeout(done, 15000);
     return assert(result, 'header.location').to.match(/^https?:\/\/.+\/todos\/[\d]+$/);
   });
 
-  it('should create the item', function() {
+  it('should create the item', function(done) {
+    this.timeout(15000);
+    setTimeout(done, 15000);
     var item = result.then(function (res) {
       return get(res.header['location']);
     });
@@ -69,21 +75,28 @@ describe('Create Todo Item', function() {
 
 describe('Update Todo Item', function() {
   var location;
+  this.timeout(15000);
 
   beforeEach(function(done) {
+    this.timeout(15000);
+    setTimeout(done, 15000);
     post(url, {title: 'Walk the dog'}).then(function(res) {
       location = res.header['location'];
       done();
     });
   });
 
-  it('should have completed set to true after PUT update', function() {
+  it('should have completed set to true after PUT update', function(done) {
     var result = update(location, 'PUT', {'completed': true});
+    this.timeout(15000);
+    setTimeout(done, 15000);
     return assert(result, "body.completed").to.be.true;
   });
 
-  it('should have completed set to true after PATCH update', function() {
+  it('should have completed set to true after PATCH update', function(done) {
     var result = update(location, 'PATCH', {'completed': true});
+    this.timeout(15000);
+    setTimeout(done, 15000);
     return assert(result, "body.completed").to.be.true;
   });
 
