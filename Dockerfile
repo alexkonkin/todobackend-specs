@@ -21,4 +21,4 @@ RUN npm install -g mocha && \
     npm install
 
 # Set mocha test runner as entrypoint
-ENTRYPOINT ["mocha","--timeout 15000"]
+ENTRYPOINT ["mocha"]
