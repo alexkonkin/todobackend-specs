@@ -10,7 +10,6 @@ var url = process.env.URL || 'http://localhost:8000/todos';
 
 describe('Cross Origin Requests', function() {
   var result;
-  this.timeout(15000);
 
   before(function() {
       result = request('OPTIONS', url)
@@ -30,9 +29,7 @@ describe('Cross Origin Requests', function() {
   });
   
 
-  it('should allow all origins', function(done) {
-    this.timeout(15000);
-    setTimeout(done, 15000);
+  it('should allow all origins', function() {
     return assert(result.header, 'access-control-allow-origin').to.equal('*');
   });
 });
@@ -40,27 +37,20 @@ describe('Cross Origin Requests', function() {
 
 describe('Create Todo Item', function() {
   var result;
-  this.timeout(15000);
 
   before(function() {
     result = post(url, { title: 'Walk the dog' });
   });
 
-  it('should return a 201 CREATED response', function(done) {
-    this.timeout(15000);
-    setTimeout(done, 15000);
+  it('should return a 201 CREATED response', function() {
     return assert(result, "status").to.equal(201);
   });
 
-  it('should receive a location hyperlink', function(done) {
-    this.timeout(15000);
-    setTimeout(done, 15000);
+  it('should receive a location hyperlink', function() {
     return assert(result, 'header.location').to.match(/^https?:\/\/.+\/todos\/[\d]+$/);
   });
 
-  it('should create the item', function(done) {
-    this.timeout(15000);
-    setTimeout(done, 15000);
+  it('should create the item', function() {
     var item = result.then(function (res) {
       return get(res.header['location']);
     });
@@ -75,28 +65,21 @@ describe('Create Todo Item', function() {
 
 describe('Update Todo Item', function() {
   var location;
-  this.timeout(15000);
 
   beforeEach(function(done) {
-    this.timeout(15000);
-    setTimeout(done, 15000);
     post(url, {title: 'Walk the dog'}).then(function(res) {
       location = res.header['location'];
       done();
     });
   });
 
-  it('should have completed set to true after PUT update', function(done) {
+  it('should have completed set to true after PUT update', function() {
     var result = update(location, 'PUT', {'completed': true});
-    this.timeout(15000);
-    setTimeout(done, 15000);
     return assert(result, "body.completed").to.be.true;
   });
 
-  it('should have completed set to true after PATCH update', function(done) {
+  it('should have completed set to true after PATCH update', function() {
     var result = update(location, 'PATCH', {'completed': true});
-    this.timeout(15000);
-    setTimeout(done, 15000);
     return assert(result, "body.completed").to.be.true;
   });
 
