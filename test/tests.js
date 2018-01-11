@@ -90,9 +90,9 @@ describe('Update Todo Item', function() {
 });
 */
 
+/*
 describe('Delete Todo Item', function() {
   var location;
-  this.timeout(15000);
 
   beforeEach(function(done) {
     post(url, {title: 'Walk the dog'}).then(function(res) {
@@ -100,20 +100,27 @@ describe('Delete Todo Item', function() {
       done();
     });
   });
-  /*
+  
   it('should return a 204 NO CONTENT response', function() {
     var result = del(location);
     return assert(result, "status").to.equal(204);
   });
-  */
-  it('should delete the item', function(done) {
-    this.timeout(15000);
-    setTimeout(done, 15000);
+  
+  it('should delete the item', function() {
     var result = del(location).then(function (res) {
       return get(location);
     });
     return expect(result).to.eventually.be.rejectedWith('Not Found');
   });
+});
+*/
+
+describe('Test mocha in Jenkins', function() {
+
+  it('should pass', function() {
+    return assert("ok").to.equal("ok");
+  });
+
 });
 
 /*
