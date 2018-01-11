@@ -9,7 +9,7 @@ var url = process.env.URL || 'http://localhost:8000/todos';
 
 describe('Cross Origin Requests', function() {
   var result;
-  this.timeout(4000);
+  this.timeout(15000);
 
   before(function() {
       result = request('OPTIONS', url)
@@ -19,8 +19,8 @@ describe('Cross Origin Requests', function() {
 
   
   it('should return the correct CORS headers', function(done) {
-    this.timeout(4000);
-    setTimeout(done, 4000);
+    this.timeout(15000);
+    setTimeout(done, 15000);
     return assert(result, "header").to.contain.all.keys([
       'access-control-allow-origin',
       'access-control-allow-methods',
@@ -30,23 +30,23 @@ describe('Cross Origin Requests', function() {
   
 
   it('should allow all origins', function(done) {
-    this.timeout(4000);
-    setTimeout(done, 4000);
+    this.timeout(15000);
+    setTimeout(done, 15000);
     return assert(result.header, 'access-control-allow-origin').to.equal('*');
   });
 });
 
 describe('Create Todo Item', function() {
   var result;
-  this.timeout(4000);
+  this.timeout(15000);
 
   before(function() {
     result = post(url, { title: 'Walk the dog' });
   });
 
   it('should return a 201 CREATED response', function(done) {
-    this.timeout(4000);
-    setTimeout(done, 4000);
+    this.timeout(15000);
+    setTimeout(done, 15000);
     return assert(result, "status").to.equal(201);
   });
 
