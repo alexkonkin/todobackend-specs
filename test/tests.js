@@ -33,6 +33,7 @@ describe('Cross Origin Requests', function() {
 });
 */
 
+/*
 describe('Create Todo Item', function() {
   var result;
 
@@ -60,7 +61,9 @@ describe('Create Todo Item', function() {
     return del(url);
   });
 });
+*/
 
+/*
 describe('Update Todo Item', function() {
   var location;
 
@@ -85,6 +88,7 @@ describe('Update Todo Item', function() {
     return del(url);
   });
 });
+*/
 
 describe('Delete Todo Item', function() {
   var location;
