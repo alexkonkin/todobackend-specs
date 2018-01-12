@@ -118,7 +118,7 @@ describe('Delete Todo Item', function() {
 describe('Test mocha in Jenkins', function() {
 
   it('should pass', function() {
-    return assert.equal(1,1);
+    return assert.equal([1,2,3].indexOf(2),1);
   });
 
 });
